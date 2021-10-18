@@ -115,7 +115,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
 
         var plugins = await plugindb.PluginDB.findAll();
         plugins.map(async (plugin) => {
-            if (Config.SWITCH == 'pinky') {
+            if (config.SWITCH == 'pinky') {
             if (!fs.existsSync('./pinky/plugins/' + plugin.dataValues.name + '.js')) {
                 console.log(plugin.dataValues.name);
                 var response = await got(plugin.dataValues.url);
@@ -125,7 +125,7 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
                 }     
             }
         }
-        else if (Config.SWITCH == 'julie') {
+        else if (config.SWITCH == 'julie') {
             if (!fs.existsSync('./plugins/' + plugin.dataValues.name + '.js')) {
                 console.log(plugin.dataValues.name);
                 var response = await got(plugin.dataValues.url);

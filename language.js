@@ -15,7 +15,8 @@ if (fs.existsSync('./language/' + Config.LANG + '.json')) {
 
     var json = JSON.parse(fs.readFileSync('./language/EN.json'));
 }
-if (Config.SWITCH == 'pinky') {
+}
+else if (Config.SWITCH == 'pinky') {
     if (fs.existsSync('./pinky/language/' + Config.LANG + '.json')) {
         console.log(
             chalk.green.bold('Loading ' + Config.LANG + ' language...')
@@ -30,7 +31,6 @@ if (Config.SWITCH == 'pinky') {
         var json = JSON.parse(fs.readFileSync('./pinky/language/EN.json'));
     }
     }
-}
 
 function getString(file) {
     return json['STRINGS'][file];
