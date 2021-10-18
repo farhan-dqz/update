@@ -115,6 +115,17 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
 
         var plugins = await plugindb.PluginDB.findAll();
         plugins.map(async (plugin) => {
+            if (Config.SWITCH == 'pinky') {
+            if (!fs.existsSync('./pinky/plugins/' + plugin.dataValues.name + '.js')) {
+                console.log(plugin.dataValues.name);
+                var response = await got(plugin.dataValues.url);
+                if (response.statusCode == 200) {
+                    fs.writeFileSync('./pinky/plugins/' + plugin.dataValues.name + '.js', response.body);
+                    require('./pinky/plugins/' + plugin.dataValues.name + '.js');
+                }     
+            }
+        }
+        else if (Config.SWITCH == 'julie') {
             if (!fs.existsSync('./plugins/' + plugin.dataValues.name + '.js')) {
                 console.log(plugin.dataValues.name);
                 var response = await got(plugin.dataValues.url);
@@ -123,8 +134,9 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
                     require('./plugins/' + plugin.dataValues.name + '.js');
                 }     
             }
+        }
         });
-
+    
         console.log(
             chalk.blueBright.italic('⬇️Installing plugins...')
         );
