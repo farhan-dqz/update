@@ -16,19 +16,19 @@ if (fs.existsSync('./language/' + Config.LANG + '.json')) {
     var json = JSON.parse(fs.readFileSync('./language/EN.json'));
 }
 }
-else if (Config.SWITCH == 'pinky') {
-    if (fs.existsSync('./pinky/language/' + Config.LANG + '.json')) {
+else if (Config.SWITCH == 'test') {
+    if (fs.existsSync('./test/language/' + Config.LANG + '.json')) {
         console.log(
             chalk.green.bold('Loading ' + Config.LANG + ' language...')
         );
     
-        var json = JSON.parse(fs.readFileSync('./pinky/language/' + Config.LANG + '.json'));
+        var json = JSON.parse(fs.readFileSync('./test/language/' + Config.LANG + '.json'));
     } else {
         console.log(
             chalk.red.bold('You entered an invalid language. English language was chosen.')
         );
     
-        var json = JSON.parse(fs.readFileSync('./pinky/language/EN.json'));
+        var json = JSON.parse(fs.readFileSync('./test/language/EN.json'));
     }
     }
 

@@ -115,13 +115,13 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
 
         var plugins = await plugindb.PluginDB.findAll();
         plugins.map(async (plugin) => {
-            if (config.SWITCH == 'pinky') {
-            if (!fs.existsSync('./pinky/plugins/' + plugin.dataValues.name + '.js')) {
+            if (config.SWITCH == 'test') {
+            if (!fs.existsSync('./test/plugins/' + plugin.dataValues.name + '.js')) {
                 console.log(plugin.dataValues.name);
                 var response = await got(plugin.dataValues.url);
                 if (response.statusCode == 200) {
-                    fs.writeFileSync('./pinky/plugins/' + plugin.dataValues.name + '.js', response.body);
-                    require('./pinky/plugins/' + plugin.dataValues.name + '.js');
+                    fs.writeFileSync('./test/plugins/' + plugin.dataValues.name + '.js', response.body);
+                    require('./test/plugins/' + plugin.dataValues.name + '.js');
                 }     
             }
         }
@@ -276,8 +276,8 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
             } else if (gb.message.includes('{gif}')) {
                 var pinkjson = await conn.groupMetadata(msg.key.remoteJid)
                 //created by afnanplk
-                    var plkpinky = await axios.get(config.GIF_BYE, { responseType: 'arraybuffer' })
-                await conn.sendMessage(msg.key.remoteJid, Buffer.from(plkpinky.data), MessageType.video, {mimetype: Mimetype.gif, caption: gb.message.replace('{gif}', '').replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name) });
+                    var plktest = await axios.get(config.GIF_BYE, { responseType: 'arraybuffer' })
+                await conn.sendMessage(msg.key.remoteJid, Buffer.from(plktest.data), MessageType.video, {mimetype: Mimetype.gif, caption: gb.message.replace('{gif}', '').replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name) });
             } else {
                 var pinkjson = await conn.groupMetadata(msg.key.remoteJid)
                    await conn.sendMessage(msg.key.remoteJid,gb.message.replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name), MessageType.text);
@@ -296,8 +296,8 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
                     //created by afnanplk
                 await conn.sendMessage(msg.key.remoteJid, res.data, MessageType.image, {caption:  gb.message.replace('{pp}', '').replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name) }); });                           
             } else if (gb.message.includes('{gif}')) {
-                var plkpinky = await axios.get(config.WEL_GIF, { responseType: 'arraybuffer' })
-                await conn.sendMessage(msg.key.remoteJid, Buffer.from(plkpinky.data), MessageType.video, {mimetype: Mimetype.gif, caption: gb.message.replace('{gif}', '').replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name) });
+                var plktest = await axios.get(config.WEL_GIF, { responseType: 'arraybuffer' })
+                await conn.sendMessage(msg.key.remoteJid, Buffer.from(plktest.data), MessageType.video, {mimetype: Mimetype.gif, caption: gb.message.replace('{gif}', '').replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name) });
             } else {
                    var pinkjson = await conn.groupMetadata(msg.key.remoteJid)
                    await conn.sendMessage(msg.key.remoteJid,gb.message.replace('{gphead}', pinkjson.subject).replace('{gpmaker}', pinkjson.owner).replace('{gpdesc}', pinkjson.desc).replace('{owner}', conn.user.name), MessageType.text);
