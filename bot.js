@@ -116,12 +116,12 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
         var plugins = await plugindb.PluginDB.findAll();
         plugins.map(async (plugin) => {
             if (config.SWITCH == 'test') {
-            if (!fs.existsSync('./test/plugins/' + plugin.dataValues.name + '.js')) {
+            if (!fs.existsSync('./afnanplk/test/plugins/' + plugin.dataValues.name + '.js')) {
                 console.log(plugin.dataValues.name);
                 var response = await got(plugin.dataValues.url);
                 if (response.statusCode == 200) {
-                    fs.writeFileSync('./test/plugins/' + plugin.dataValues.name + '.js', response.body);
-                    require('./test/plugins/' + plugin.dataValues.name + '.js');
+                    fs.writeFileSync('./afnanplk/test/plugins/' + plugin.dataValues.name + '.js', response.body);
+                    require('./afnanplk/test/plugins/' + plugin.dataValues.name + '.js');
                 }     
             }
         }
