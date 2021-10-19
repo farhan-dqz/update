@@ -197,7 +197,11 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp...')}`);
                 else {
                     await conn.sendMessage(conn.user.jid, '*Bot Started*', MessageType.text);
                 }
-
+                var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
+                if (commits.total === 0) {
+                    await conn.sendMessage(conn.user.jid,Lang.UPDATE, MessageType.text);    
+                    await conn.sendMessage(conn.user.jid,'```Type``` *.update now* ```For The Update julie.```\n\n' + degisiklikler + '```', MessageType.text); 
+                }
             }
         }
         else if (config.WORKTYPE == 'private') {
