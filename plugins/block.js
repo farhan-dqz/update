@@ -41,7 +41,7 @@ if (Config.LANG == 'EN') plk2 = '.block'
 if (Config.LANG == 'ML') plk = 'ക്ഷമിക്കണം PM ൽ ചാറ്റിംഗ് അനുവദനീയമല്ല'
 if (Config.LANG == 'ML') plk2 = '.block'
 Asena.addCommand({on: 'text', fromMe: false, onlyPm: true , deleteCommand: false}, (async (message, match) => {
-    if (pmblock_var == 'true' && message.jid !== Config.PM_ALLOWED) {
+    if (pmblock_var == 'true' && message.jid !== Config.BGMFILTER) {
         let regex1 = anything
         if (!regex1.test(message.message)) {
            await message.client.sendMessage(message.jid,plk, MessageType.text, {quoted: message.data })
